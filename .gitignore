@@ -1,0 +1,12 @@
+.DS_Store
+
+# Licensed font files (PP Neue Montreal) — not used by the page; keep out of a public repo
+assets/fonts/
+
+# Logo drafts not used on the page
+assets/logo.png
+assets/logo-black.png
+assets/logo-white.png
+assets/logo.svg
+assets/grecked-wordmark.svg
+assets/dots/all-dots.svg

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GRECK · Coming soon</title>
+  <meta name="description" content="Hand-painted, hand-sewn bags by artist MacKenzie Greckel. Houston, Texas. The shop opens soon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=18">
+</head>
+<body>
+
+  <!-- Header: gradient pill -->
+  <header class="site-header" id="top">
+    <a class="header-logo" href="#top" aria-label="GRECK home">
+      <img src="assets/greck-logo.svg" alt="greck" width="146" height="81">
+    </a>
+    <a class="btn btn-ink" href="#list">Join the list</a>
+  </header>
+
+  <main class="sheet">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1 class="hero-logo reveal">
+        <img src="assets/get-grecked.svg" alt="Get grecked" width="160" height="102">
+      </h1>
+
+      <p class="coming reveal">coming soon</p>
+
+      <!-- Her painted dots -->
+      <a class="dots reveal" href="#list" aria-label="Join the list">
+        <img src="assets/dots/dot-1.svg" alt="" style="--i: 0">
+        <img src="assets/dots/dot-2.svg" alt="" style="--i: 1">
+        <img src="assets/dots/dot-3.svg" alt="" style="--i: 2">
+        <img src="assets/dots/dot-4.svg" alt="" style="--i: 3">
+        <img src="assets/dots/dot-5.svg" alt="" style="--i: 4">
+      </a>
+
+      <p class="statement">
+        Art you're allowed to touch. Every piece is painted by hand, sewn by hand, and
+        <mark>never made twice.</mark>
+      </p>
+
+      <p class="label reveal">Painted + sewn in Houston, Texas</p>
+      <p class="define reveal">
+        <span>greck</span>
+        <span class="define-say">[guh-wreck]</span>
+        <span class="define-pos">n.</span>
+      </p>
+    </section>
+
+    <!-- Ticker -->
+    <!-- The track holds the run twice so it can loop without a jump -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Shop coming soon</span><img src="assets/ticker/tdot-5.svg" alt="">
+        <span>Bugs</span><img src="assets/ticker/tdot-6.svg" alt="">
+        <span>Dots</span><img src="assets/ticker/tdot-2.svg" alt="">
+        <span>Color</span><img src="assets/ticker/tdot-1.svg" alt="">
+        <span>Shop coming soon</span><img src="assets/ticker/tdot-4.svg" alt="">
+        <span>Bugs</span><img src="assets/ticker/tdot-3.svg" alt="">
+        <span>Dots</span><img src="assets/ticker/tdot-6.svg" alt="">
+        <span>Color</span><img src="assets/ticker/tdot-1.svg" alt="">
+        <span>Shop coming soon</span><img src="assets/ticker/tdot-5.svg" alt="">
+        <span>Bugs</span><img src="assets/ticker/tdot-6.svg" alt="">
+        <span>Dots</span><img src="assets/ticker/tdot-2.svg" alt="">
+        <span>Color</span><img src="assets/ticker/tdot-1.svg" alt="">
+        <span>Shop coming soon</span><img src="assets/ticker/tdot-4.svg" alt="">
+        <span>Bugs</span><img src="assets/ticker/tdot-3.svg" alt="">
+        <span>Dots</span><img src="assets/ticker/tdot-6.svg" alt="">
+        <span>Color</span><img src="assets/ticker/tdot-1.svg" alt="">
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="about">
+      <div class="about-copy">
+        <p class="eyebrow">About</p>
+        <p class="about-lead">
+          MacKenzie Greckel is a painter. Her canvas just happens to be a bag.
+        </p>
+        <p class="about-body">
+          Every bag is hand sewn and hand painted in acrylic and marker, made entirely by her. The work runs in three
+          series, and no two pieces are alike. Until now you had to catch them on Depop.
+          Soon they'll have a home of their own.
+        </p>
+
+        <ul class="series" aria-label="Collections">
+          <li style="--pos: 30% 38%"><span class="series-num">01</span><span class="series-name">Bugs</span><span class="series-swatch" aria-hidden="true"></span></li>
+          <li style="--pos: 55% 52%"><span class="series-num">02</span><span class="series-name">Dots</span><span class="series-swatch" aria-hidden="true"></span></li>
+          <li style="--pos: 40% 72%"><span class="series-num">03</span><span class="series-name">Color</span><span class="series-swatch" aria-hidden="true"></span></li>
+        </ul>
+      </div>
+
+      <figure class="about-photo">
+        <!-- Add photos here; the counter updates itself. -->
+        <div class="slides">
+          <img class="slide is-active" src="assets/bags-stack.jpg" alt="Hand-painted GRECK bags being stacked, one lifted off the top" width="1333" height="2000">
+          <img class="slide" src="assets/bags.jpg" alt="A stack of five hand-painted GRECK bags held up by two pairs of hands" width="1293" height="2000" loading="lazy">
+        </div>
+        <figcaption class="tag"><span class="slide-count">1/2</span></figcaption>
+      </figure>
+    </section>
+
+    <!-- Photo row -->
+    <section class="gallery" aria-label="GRECK bags in the wild">
+      <img src="assets/photo-jeans.jpg" alt="A hand-painted GRECK bag held at the hip with wide-leg jeans" width="955" height="1400" loading="lazy">
+      <img src="assets/photo-hat.jpg" alt="Wearing a red &quot;sorry i'm late got grecked in houston tx&quot; trucker hat and holding three painted bags" width="933" height="1400" loading="lazy">
+      <img src="assets/photo-dots.jpg" alt="Posing in a black and white polka dot outfit against a matching dotted backdrop" width="1173" height="1400" loading="lazy">
+    </section>
+
+    <!-- Signup
+         Shopify: swap the <form> for {% form 'customer' %} ... {% endform %}.
+         Field names below already match Shopify's newsletter form. -->
+    <section class="signup" id="list">
+      <div class="signup-copy">
+        <h2>coming soon</h2>
+        <p>
+          The shop is almost ready. Join the list and you'll hear about it first,
+          along with every new drop.
+        </p>
+
+        <form class="signup-form" action="/contact#contact_form" method="post" novalidate>
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="contact[tags]" value="newsletter, coming-soon">
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" type="email" name="contact[email]" placeholder="your@email.com" autocomplete="email" required>
+          <button class="btn btn-ink" type="submit">Join the list</button>
+        </form>
+        <p class="form-note" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>GRECK &copy; 2026</p>
+    <nav aria-label="Social">
+      <a href="mailto:greck.inquiry@gmail.com">greck.inquiry@gmail.com</a>
+      <a href="https://www.instagram.com/greckdotcom/" target="_blank" rel="noopener">Instagram @greckdotcom</a>
+    </nav>
+    <p class="credit">A little greck love goes a long way.</p>
+  </footer>
+
+  <script src="main.js?v=3"></script>
+</body>
+</html>
