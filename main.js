@@ -40,23 +40,57 @@ setTimeout(() => {
   document.querySelectorAll('.hero .reveal, .hero .statement').forEach((el) => el.classList.add('is-in'));
 }, 60);
 
-// Signup. Placeholder until it lives on Shopify, where the form posts for real.
+// Signup. Adds the email to Kenzie's Klaviyo list until the page moves to Shopify.
+// Both IDs are public (safe to commit): the site ID is under Klaviyo
+// Settings > API keys ("Public API Key"), the list ID is in the list's settings.
+const KLAVIYO = { siteId: '', listId: '' };
+
 const signup = document.querySelector('.signup');
 const form = signup.querySelector('.signup-form');
 const note = signup.querySelector('.form-note');
-form.addEventListener('submit', (e) => {
+const button = form.querySelector('button');
+
+const subscribe = (email) =>
+  fetch(`https://a.klaviyo.com/client/subscriptions?company_id=${KLAVIYO.siteId}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/vnd.api+json', revision: '2024-10-15' },
+    body: JSON.stringify({
+      data: {
+        type: 'subscription',
+        attributes: {
+          custom_source: 'GRECK coming soon page',
+          profile: { data: { type: 'profile', attributes: { email } } },
+        },
+        relationships: { list: { data: { type: 'list', id: KLAVIYO.listId } } },
+      },
+    }),
+  }).then((res) => { if (!res.ok) throw new Error(res.status); });
+
+const showError = (msg) => {
+  form.classList.remove('is-error');
+  void form.offsetWidth;
+  form.classList.add('is-error');
+  note.textContent = msg;
+};
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = form.elements['contact[email]'];
   if (!email.checkValidity() || !email.value) {
-    form.classList.remove('is-error');
-    void form.offsetWidth;
-    form.classList.add('is-error');
-    note.textContent = "That email doesn't look right.";
+    showError("That email doesn't look right.");
     email.focus();
     return;
   }
-  signup.classList.add('is-done');
-  note.textContent = "You're on the list. We'll be in touch.";
+  button.disabled = true;
+  try {
+    if (KLAVIYO.siteId && KLAVIYO.listId) await subscribe(email.value.trim());
+    signup.classList.add('is-done');
+    note.textContent = "You're on the list. We'll be in touch.";
+  } catch {
+    showError('Something went wrong. Try again in a minute.');
+  } finally {
+    button.disabled = false;
+  }
 });
 
 // About photo slideshow: crossfades every few seconds, click to skip ahead.
