@@ -23,7 +23,7 @@ thank-you message and saves nothing.
 
 ## Custom domain
 
-greckdot.com points here through GoDaddy DNS: four A records for `@`
+gotgrecked.com points here through GoDaddy DNS: four A records for `@`
 (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153) and a `www`
 CNAME to `brookerogersdesign.github.io`. The `CNAME` file in this repo tells GitHub Pages
-the domain. greckbag.com, greckel.com and gotgrecked.com forward to greckdot.com in GoDaddy.
+the domain. greckdot.com, greckbag.com and greckel.com forward to gotgrecked.com in GoDaddy.
