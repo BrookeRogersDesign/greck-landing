@@ -40,10 +40,11 @@ setTimeout(() => {
   document.querySelectorAll('.hero .reveal, .hero .statement').forEach((el) => el.classList.add('is-in'));
 }, 60);
 
-// Signup. Adds the email to Kenzie's Klaviyo list until the page moves to Shopify.
-// Both IDs are public (safe to commit): the site ID is under Klaviyo
-// Settings > API keys ("Public API Key"), the list ID is in the list's settings.
-const KLAVIYO = { siteId: '', listId: '' };
+// Signup. Each email is sent to Kenzie's inbox through FormSubmit (free, no account)
+// until the page moves to Shopify. The first signup sends her an activation email;
+// nothing gets through until she clicks it. FormSubmit then emails her a random
+// address that can replace hers here, so her Gmail isn't in the page source.
+const SIGNUP_TO = 'mackenziegreckel@gmail.com';
 
 const signup = document.querySelector('.signup');
 const form = signup.querySelector('.signup-form');
@@ -51,20 +52,18 @@ const note = signup.querySelector('.form-note');
 const button = form.querySelector('button');
 
 const subscribe = (email) =>
-  fetch(`https://a.klaviyo.com/client/subscriptions?company_id=${KLAVIYO.siteId}`, {
+  fetch(`https://formsubmit.co/ajax/${SIGNUP_TO}`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/vnd.api+json', revision: '2024-10-15' },
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({
-      data: {
-        type: 'subscription',
-        attributes: {
-          custom_source: 'GRECK coming soon page',
-          profile: { data: { type: 'profile', attributes: { email } } },
-        },
-        relationships: { list: { data: { type: 'list', id: KLAVIYO.listId } } },
-      },
+      email,
+      _subject: 'New GRECK list signup',
+      _template: 'table',
+      _honey: form.elements._honey.value, // bots fill this hidden field; FormSubmit drops those
     }),
-  }).then((res) => { if (!res.ok) throw new Error(res.status); });
+  })
+    .then((res) => res.json())
+    .then((r) => { if (String(r.success) !== 'true') throw new Error(r.message); });
 
 const showError = (msg) => {
   form.classList.remove('is-error');
@@ -83,7 +82,7 @@ form.addEventListener('submit', async (e) => {
   }
   button.disabled = true;
   try {
-    if (KLAVIYO.siteId && KLAVIYO.listId) await subscribe(email.value.trim());
+    await subscribe(email.value.trim());
     signup.classList.add('is-done');
     note.textContent = "You're on the list. We'll be in touch.";
   } catch {

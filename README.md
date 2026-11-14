@@ -17,9 +17,9 @@ Then open http://localhost:5180.
 
 This page becomes the store's password page. The signup form already uses Shopify's
 newsletter field names; swap the `<form>` for `{% form 'customer' %} … {% endform %}`.
-Until then, signups go to Kenzie's Klaviyo list. Fill in `KLAVIYO.siteId` and `KLAVIYO.listId`
-at the top of the signup section in `main.js`. While they're blank, the form only shows a
-thank-you message and saves nothing.
+Until then, each signup is emailed to mackenziegreckel@gmail.com through FormSubmit
+(formsubmit.co, free, no account). The first signup sends Kenzie an activation email, and
+nothing is delivered until she clicks it. The address is `SIGNUP_TO` in `main.js`.
 
 ## Custom domain
 
